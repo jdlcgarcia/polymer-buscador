@@ -1,0 +1,7 @@
+{
+  "name": "buscador-asegurados",
+  "short_name": "buscador-asegurados",
+  "description": "Buscador de asegurados para SABE",
+  "start_url": "/",
+  "display": "standalone"
+}
