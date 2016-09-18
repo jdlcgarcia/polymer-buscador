@@ -1,13 +1,47 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="asegurado-card.html">
+
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
 <dom-module id="buscador-main">
   <template>
     <style>
-      :host {
-        display: block;
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        background-color: #eee;
+        scroll-behavior: smooth;
+      }
+
+      app-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        /*height: 212px;*/
+        color: #fff;
+        background-color: #3f51b5;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <app-header>
+      <app-toolbar>
+        <paper-icon-button icon="menu"></paper-icon-button>
+        <div main-title>Buscador de asegurados</div>
+        <paper-icon-button icon="search"></paper-icon-button>
+      </app-toolbar>
+    </app-header>
+    <template is="dom-repeat" items="{{employees}}">
+        <asegurado-card asegurado-nombre={{item.nombre}} asegurado-apellidos={{item.apellidos}} asegurado-cliente={{item.cliente}} asegurado-tipo-seguro={{item.tipoSeguro}}></asegurado-card>
+    </template>
+    
+    
   </template>
 
   <script>
@@ -21,6 +55,12 @@
           value: 'buscador-main',
         },
       },
+      ready: function() {
+        this.employees = [
+            {nombre: 'Juan de la Cruz', apellidos: 'García García', cliente: 'Interesse', tipoSeguro: 'Vida, Gastos Médicos Mayores'},
+            {nombre: 'Jhennifer Monserrat', apellidos: 'Ceballos Crespo', cliente: 'Interesse', tipoSeguro: 'Gastos Médicos Mayores'}
+        ];
+      }
 
     });
   </script>
